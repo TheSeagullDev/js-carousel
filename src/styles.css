@@ -1,7 +1,50 @@
 .carousel-container {
   width: 50vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 img {
   max-width: 100%;
+}
+
+.next,
+.last {
+  background: rgb(0 0 0 / 40%);
+  position: absolute;
+  top: 45%;
+  border: none;
+  cursor: pointer;
+  height: 10%;
+}
+
+.chevron {
+  height: 32px;
+}
+
+.last {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #9999994d;
+  border-radius: 10px;
+}
+
+.circle:hover {
+  background-color: #5a5a5a4d;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+  padding: 10px;
 }

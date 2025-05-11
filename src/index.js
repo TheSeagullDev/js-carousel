@@ -1,6 +1,6 @@
 import "./styles.css";
 
-const images = document.querySelectorAll("img");
+const images = document.querySelectorAll(".image-container");
 let index = 0;
 
 function hideAll(imagesArr) {
@@ -33,17 +33,22 @@ function last(imagesArr) {
   goTo(imagesArr, index);
 }
 
-const nextBtn = document.createElement("button");
-const lastBtn = document.createElement("button");
-const body = document.querySelector("body");
-nextBtn.textContent = "Next";
-nextBtn.addEventListener("click", () => next(images));
-body.appendChild(nextBtn);
+function createCircles(imagesArr, buttons) {
+  for(let image = 0; image < imagesArr.length; image++) {
+    const circle = document.createElement("div");
+    circle.classList.add("circle");
+    circle.addEventListener("click", () => goTo(imagesArr, image));
+    buttons.appendChild(circle);
+  }
+}
 
-lastBtn.textContent = "Last";
+const buttons = document.querySelector(".buttons");
+const nextBtn = document.querySelector(".next")
+const lastBtn = document.querySelector(".last");
+nextBtn.addEventListener("click", () => next(images));
 lastBtn.addEventListener("click", () => last(images));
-body.appendChild(lastBtn);
 
 goTo(images, 0);
+createCircles(images, buttons);
 
 setInterval(() => next(images), 5000);
